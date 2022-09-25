@@ -22,7 +22,7 @@ namespace Tracer.Core.TracerResult
             Name = methodInfo.Name;
             ClassName = methodInfo.ClassName;
             Time = methodInfo.Stopwatch.Elapsed;
-            Methods = (IReadOnlyList<TraceMethod>)methodInfo.Methods.Select(m => new TraceMethod(m));
+            Methods = methodInfo.Methods.Select(m => new TraceMethod(m)).ToList();
         }
     }
 }

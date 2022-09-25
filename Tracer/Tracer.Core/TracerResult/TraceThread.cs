@@ -21,7 +21,7 @@ namespace Tracer.Core.TracerResult
         {
             ThreadId = threadId;
             Time = threadInfo.TopMethods.Select(i => i.Stopwatch.Elapsed.TotalMilliseconds).Sum();
-            Methods = (IReadOnlyList<TraceMethod>)threadInfo.TopMethods.Select(m => new TraceMethod(m));
+            Methods = threadInfo.TopMethods.Select(m => new TraceMethod(m)).ToList();
         }
     }
 }
