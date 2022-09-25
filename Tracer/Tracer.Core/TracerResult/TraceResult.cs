@@ -1,4 +1,4 @@
-﻿namespace Tracer.Core.TraceResult
+﻿namespace Tracer.Core.TracerResult
 {
     public class TraceResult
     {
