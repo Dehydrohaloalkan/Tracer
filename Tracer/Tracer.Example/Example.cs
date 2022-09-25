@@ -21,5 +21,3 @@ thread1.Join();
 thread2.Join();
 
 var traceResult = tracer.GetTraceResult();
-
-Console.WriteLine(traceResult);
