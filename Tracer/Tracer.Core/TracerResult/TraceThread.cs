@@ -1,4 +1,6 @@
-﻿namespace Tracer.Core
+﻿using Tracer.Core.TracerResult;
+
+namespace Tracer.Core.TraceResult
 {
     public class TraceThread
     {
@@ -9,8 +11,8 @@
             Methods = methods;
         }
 
-        public int ThreadId { get; init; }
-        public TimeSpan Time { get; init; }
-        public IReadOnlyList<TraceMethod> Methods { get;}
+        public int ThreadId { get; internal set; }
+        public TimeSpan Time { get; internal set; }
+        public IReadOnlyList<TraceMethod> Methods { get; }
     }
 }
