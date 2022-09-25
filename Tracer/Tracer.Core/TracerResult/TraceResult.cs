@@ -2,11 +2,11 @@
 {
     public class TraceResult
     {
+        public IReadOnlyList<TraceThread> Threads { get; }
+        
         public TraceResult(IReadOnlyList<TraceThread> threads)
         {
             Threads = threads;
         }
-
-        public IReadOnlyList<TraceThread> Threads { get; }
     }
 }

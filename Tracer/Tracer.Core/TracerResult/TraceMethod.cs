@@ -1,7 +1,14 @@
-﻿namespace Tracer.Core.TracerResult
+﻿using Tracer.Core.TracerInfo;
+
+namespace Tracer.Core.TracerResult
 {
     public class TraceMethod
     {
+        public string Name { get; init; }
+        public string ClassName { get; init; }
+        public TimeSpan Time { get; init; }
+        public IReadOnlyList<TraceMethod> Methods { get; init; }
+
         public TraceMethod(string name, string className, TimeSpan time, IReadOnlyList<TraceMethod> methods)
         {
             Name = name;
@@ -10,18 +17,12 @@
             Methods = methods;
         }
 
-        public TraceMethod()
+        internal TraceMethod(MethodInfo methodInfo)
         {
-            Name = string.Empty;
-            ClassName = string.Empty;
-            Time = TimeSpan.Zero;
-            Methods = new List<TraceMethod>();
+            Name = methodInfo.Name;
+            ClassName = methodInfo.ClassName;
+            Time = methodInfo.Stopwatch.Elapsed;
+            Methods = (IReadOnlyList<TraceMethod>)methodInfo.Methods.Select(m => new TraceMethod(m));
         }
-
-        public string Name { get; internal set; }
-        public string ClassName { get; internal set; }
-        public TimeSpan Time { get; internal set; }
-        public IReadOnlyList<TraceMethod> Methods { get; }
-
     }
 }

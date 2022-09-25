@@ -1,16 +1,27 @@
-﻿namespace Tracer.Core.TracerResult
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
+using Tracer.Core.TracerInfo;
+
+namespace Tracer.Core.TracerResult
 {
     public class TraceThread
     {
-        public TraceThread(int threadId, TimeSpan time, IReadOnlyList<TraceMethod> methods)
+        public int ThreadId { get; init; }
+        public double Time { get; init; }
+        public IReadOnlyList<TraceMethod> Methods { get; }
+
+        public TraceThread(int threadId, double time, IReadOnlyList<TraceMethod> methods)
         {
             ThreadId = threadId;
             Time = time;
             Methods = methods;
         }
 
-        public int ThreadId { get; internal set; }
-        public TimeSpan Time { get; internal set; }
-        public IReadOnlyList<TraceMethod> Methods { get; }
+        internal TraceThread(int threadId, ThreadInfo threadInfo)
+        {
+            ThreadId = threadId;
+            Time = threadInfo.TopMethods.Select(i => i.Stopwatch.Elapsed.TotalMilliseconds).Sum();
+            Methods = (IReadOnlyList<TraceMethod>)threadInfo.TopMethods.Select(m => new TraceMethod(m));
+        }
     }
 }
