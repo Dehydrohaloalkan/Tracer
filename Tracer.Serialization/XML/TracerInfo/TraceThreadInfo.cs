@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 using Tracer.Core.TracerResult;
 
 namespace XML.TracerInfo
