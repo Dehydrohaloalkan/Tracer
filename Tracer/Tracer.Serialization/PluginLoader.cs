@@ -25,7 +25,7 @@ namespace Tracer.Serialization
             var files = directory.GetFiles("*.dll");
             foreach (var file in files)
             {
-                var assembly = Assembly.LoadFile(file.Name);
+                var assembly = Assembly.LoadFile(file.FullName);
                 var types = assembly.GetTypes().Where(t => t.IsAssignableTo(typeof(T)));
                 foreach (var type in types)
                 {
