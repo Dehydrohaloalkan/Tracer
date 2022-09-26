@@ -1,6 +1,5 @@
 ﻿using System.Collections.Concurrent;
 using System.Diagnostics;
-using System.Runtime.InteropServices.ComTypes;
 using Tracer.Core.TracerInfo;
 using Tracer.Core.TracerResult;
 
