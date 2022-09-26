@@ -1,6 +1,6 @@
 ﻿namespace JSON
 {
-    public class Class1
+    public class JsonSerializer
     {
 
     }
