@@ -3,19 +3,18 @@ using Tracer.Serialization;
 using Tracer.Serialization.Abstraction;
 
 var tracer = new Tracer.Core.Tracer();
-
-var foo = new Foo(tracer);
-var bar = new Bar(tracer);
+var second = new SecondClass(tracer);
+var first = new FirstClass(tracer);
 
 var thread1 = new Thread(() =>
 {
-    foo.MyMethod();
+    second.Sleep500WithTrace();
 });
 thread1.Start();
 
 var thread2 = new Thread(() =>
 {
-    bar.InnerMethod();
+    first.Sleep100WithTrace();
 });
 thread2.Start();
 
@@ -24,6 +23,6 @@ thread2.Join();
 
 var traceResult = tracer.GetTraceResult();
 
-PluginLoader pluginLoader = new PluginLoader("Plugins");
+var pluginLoader = new PluginLoader("Plugins");
 var plugins = pluginLoader.GetPlugins<ITraceResultSerializer>();
 SerializersManager.SerializeToFiles(plugins, traceResult, "Result");

@@ -2,16 +2,16 @@
 
 namespace Tracer.Example.Classes
 {
-    public class Bar
+    public class FirstClass
     {
         private readonly ITracer _tracer;
 
-        public Bar(ITracer tracer)
+        public FirstClass(ITracer tracer)
         {
             _tracer = tracer;
         }
 
-        public void InnerMethod()
+        public void Sleep100WithTrace()
         {
             _tracer.StartTrace();
             Thread.Sleep(100);
