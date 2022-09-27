@@ -9,6 +9,9 @@ namespace Tracer.Core
     {
         private readonly ConcurrentDictionary<int, ThreadInfo> _threads = new();
 
+        /// <summary>
+        /// Starts method tracing
+        /// </summary>
         public void StartTrace()
         {
             var stackMethod = new StackTrace().GetFrame(1)!.GetMethod()!;
@@ -36,6 +39,9 @@ namespace Tracer.Core
             methodInfo.Stopwatch.Start();
         }
 
+        /// <summary>
+        /// Stops method tracing
+        /// </summary>
         public void StopTrace()
         {
             var threadId = Thread.CurrentThread.ManagedThreadId;
@@ -44,6 +50,10 @@ namespace Tracer.Core
             methodInfo.Stopwatch.Stop();
         }
 
+        /// <summary>
+        /// Returns the result of tracing
+        /// </summary>
+        /// <returns> A TraceResult object that contains information about tracing </returns>
         public TraceResult GetTraceResult()
         {
             return new TraceResult(_threads.Values.Select((t, index) => new TraceThread(index, t)).ToList());
