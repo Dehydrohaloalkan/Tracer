@@ -6,16 +6,10 @@ var tracer = new Tracer.Core.Tracer();
 var second = new SecondClass(tracer);
 var first = new FirstClass(tracer);
 
-var thread1 = new Thread(() =>
-{
-    second.Sleep500WithTrace();
-});
+var thread1 = new Thread(() => second.Sleep500WithTrace());
 thread1.Start();
 
-var thread2 = new Thread(() =>
-{
-    first.Sleep100WithTrace();
-});
+var thread2 = new Thread(() => first.Sleep100WithTrace());
 thread2.Start();
 
 thread1.Join();
