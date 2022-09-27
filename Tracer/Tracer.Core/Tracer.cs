@@ -13,7 +13,7 @@ namespace Tracer.Core
         {
             var stackMethod = new StackTrace().GetFrame(1)!.GetMethod()!;
 
-            MethodInfo methodInfo = new MethodInfo()
+            var methodInfo = new MethodInfo
             {
                 Name = stackMethod.Name,
                 ClassName = stackMethod.DeclaringType != null ? stackMethod.DeclaringType.Name : string.Empty
@@ -34,7 +34,6 @@ namespace Tracer.Core
 
             threadInfo.RunningMethods.Push(methodInfo);
             methodInfo.Stopwatch.Start();
-
         }
 
         public void StopTrace()

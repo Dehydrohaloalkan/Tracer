@@ -5,7 +5,7 @@ namespace Tracer.Serialization
 {
     public static class SerializersManager
     {
-        public static void SerializeToFiles(List<ITraceResultSerializer> serializers, TraceResult traceResult,
+        public static void SerializeToFiles(IEnumerable<ITraceResultSerializer> serializers, TraceResult traceResult,
             string fileName)
         {
             foreach (var serializer in serializers)

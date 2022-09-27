@@ -11,8 +11,8 @@ namespace Tracer.Core.TracerInfo
 
         public MethodInfo()
         {
-            Name = String.Empty;
-            ClassName = String.Empty;
+            Name = string.Empty;
+            ClassName = string.Empty;
             Stopwatch = new Stopwatch();
             Methods = new List<MethodInfo>();
         }

@@ -14,8 +14,8 @@ namespace YAML
             var traceResultInfo = new TraceResultInfo(traceResult);
             var serializer = new Serializer();
 
-            using (var streamWriter = new StreamWriter(to))
-                serializer.Serialize(streamWriter, traceResultInfo);
+            using var streamWriter = new StreamWriter(to);
+            serializer.Serialize(streamWriter, traceResultInfo);
             
         }
     }

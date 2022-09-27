@@ -11,7 +11,7 @@ namespace Tracer.Serialization
             Path = path;
         }
 
-        public List<T> GetPlugins<T>()
+        public IEnumerable<T> GetPlugins<T>()
         {
             var plugins = new List<T>();
             var directory = new DirectoryInfo(Path);
